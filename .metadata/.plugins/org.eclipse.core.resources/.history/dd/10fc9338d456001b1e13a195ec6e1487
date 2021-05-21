@@ -1,0 +1,39 @@
+package com.connorwojtak.main;
+
+import java.util.ArrayList;
+import java.util.Set;
+
+import org.reflections.*;
+import org.reflections.util.*;
+public class Main {
+	
+	public static ArrayList<Class<? extends Exception>> EXCEPTIONS = new ArrayList<Class<? extends Exception>>();
+	
+	public static void main(String[] args) throws Exception {
+		populateExceptions();
+		exceptionRecurser(EXCEPTIONS.size() - 1);
+	}
+	
+	public static void populateExceptions() {
+		Reflections r = new Reflections(new ConfigurationBuilder()
+			     .setUrls(ClasspathHelper.forPackage("my.project.prefix"))
+			     .setScanners(new SubTypesScanner(), 
+			                  new TypeAnnotationsScanner().filterResultsBy(optionalFilter), ...),
+			     .filterInputsBy(new FilterBuilder().includePackage("my.project.prefix"))
+			     ...);
+		Set<Class<? extends Exception>> buffer = r.getSubTypesOf(Exception.class);
+		EXCEPTIONS.addAll(buffer);
+	}
+	
+	@SuppressWarnings("deprecation")
+	public static void exceptionRecurser(int i) throws Exception {
+		if(i > 0) {
+			try {
+				exceptionRecurser(i - 1);
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		throw EXCEPTIONS.get(i).newInstance();
+	}
+}

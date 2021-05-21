@@ -1,0 +1,6 @@
+INDEX VERSION 1.131+C:\Users\Connor\Desktop\CurrentProjects\Exceptionator\.metadata\.plugins\org.eclipse.jdt.core
+895672176.index
+4154789148.index
+3193897675.index
+2872044937.index
+2833437776.index

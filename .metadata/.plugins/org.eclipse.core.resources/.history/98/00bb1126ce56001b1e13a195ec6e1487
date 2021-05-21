@@ -1,0 +1,16 @@
+package com.connorwojtak.main;
+
+import java.util.ArrayList;
+
+public class Main {
+	
+	public static ArrayList<Class<? extends Exception>> EXCEPTIONS = new ArrayList<Class<? extends Exception>>();
+	
+	public static void main(String[] args) {
+		populateExceptions();
+	}
+	
+	public static void populateExceptions() {
+		
+	}
+}

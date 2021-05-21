@@ -1,0 +1,25 @@
+module com.connorwojtak.exceptionator {
+	requires java.base;
+	requires java.compiler;
+	requires java.datatransfer;
+	requires java.desktop;
+	requires java.instrument;
+	requires java.logging;
+	requires java.management;
+	requires java.management.rmi;
+	requires java.naming;
+	requires java.net.http;
+	requires java.prefs;
+	requires java.rmi;
+	requires java.scripting;
+	requires java.se;
+	requires java.security.jgss;
+	requires java.security.sasl;
+	requires java.smartcardio;
+	requires java.sql;
+	requires java.sql.rowset;
+	requires java.transaction.xa;
+	requires java.xml;
+	requires java.xml.crypto;
+	exports com.connorwojtak.main;
+}

@@ -1,0 +1,30 @@
+package com.connorwojtak.main;
+
+import java.util.ArrayList;
+
+public class Main {
+	
+	public static ArrayList<Class<? extends Exception>> EXCEPTIONS = new ArrayList<Class<? extends Exception>>();
+	
+	public static void main(String[] args) throws Exception {
+		populateExceptions();
+		exceptionRecurser(EXCEPTIONS.size());
+	}
+	
+	public static void populateExceptions() {
+		EXCEPTIONS.add(Exception.class);
+		EXCEPTIONS.add(SecurityException.class);
+	}
+	
+	@SuppressWarnings("deprecation")
+	public static void exceptionRecurser(int i) throws Exception {
+		if(i > 1) {
+			try {
+				exceptionRecurser(i - 1);
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		throw EXCEPTIONS.get(i).newInstance();
+	}
+}
